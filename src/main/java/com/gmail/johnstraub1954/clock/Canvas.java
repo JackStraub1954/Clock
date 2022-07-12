@@ -186,34 +186,4 @@ public class Canvas extends JPanel
         hHandler.place();
         gtx.dispose();
     }
-    
-//    private Image getTexture()
-//    {
-//        String    texturePath     = "pexels-lukas-wood-cropped-349610.jpg";
-//
-//        ClassLoader loader      = Canvas.class.getClassLoader();
-//        InputStream inStream    = 
-//                loader.getResourceAsStream( texturePath );
-//        if ( inStream == null )
-//        {
-//            String  message = 
-//                "Failed to load texture input stream: " + texturePath;
-//            throw new IllegalStateException( message );
-//        }
-//        
-//        Image   image   = null;
-//        try
-//        {
-//            image = ImageIO.read( inStream );
-//        }
-//        catch ( IOException exc )
-//        {
-//            String  message = 
-//                "Failed to load texture file: " + texturePath;
-//            throw new IllegalStateException( message );
-//        }
-//        
-//        image = image.getScaledInstance( (int)RIM_SIDE, -1, Image.SCALE_SMOOTH );
-//        return image;
-//    }
 }

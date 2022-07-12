@@ -12,15 +12,15 @@ public enum Alarm
 {
     INSTANCE;
     
-    private static final long   DEF_SLEEP_TIME      = 125; // milliseconds
-    private static final Object SYNCHER             = new Object();
+    private static final long   defSleepTimer       = 10; // milliseconds
+    private static final Object syncher             = new Object();
     
     private final Thread    timerThread = 
         new Thread( new Timer(), "Alarm thread" );
     
     private final List<ActionListener>  actionListeners = new ArrayList<>();
     
-    private long    timeout = DEF_SLEEP_TIME;
+    private long    timeout = defSleepTimer;
     
     private Alarm()
     {
@@ -69,11 +69,11 @@ public enum Alarm
             {
                 try
                 {
-                    synchronized ( SYNCHER )
+                    synchronized ( syncher )
                     {
                         // I don't know how to get test coverage 
                         // on this line of code.
-                        SYNCHER.wait( timeout );
+                        syncher.wait( timeout );
                     }
                 } 
                 catch ( InterruptedException exc )

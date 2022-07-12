@@ -64,7 +64,6 @@ public class HandHandler
 
     private class SecondHand extends Hand
     {
-        
         private static final double    MAX_WIDTH    = RIM_SIDE * .01;
         private static final double    DESCENT      = MAX_WIDTH;
         private static final double    ASCENT       = RIM_SIDE / 2;

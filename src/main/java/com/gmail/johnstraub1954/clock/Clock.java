@@ -1,23 +1,27 @@
 package com.gmail.johnstraub1954.clock;
 
-import java.awt.BorderLayout;
-import java.awt.Container;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.lang.reflect.InvocationTargetException;
 
 import javax.swing.JFrame;
+import javax.swing.JTabbedPane;
 import javax.swing.SwingUtilities;
 
-public class Clock implements ActionListener
+public class Clock
 {
-    private final JFrame            frame           = 
-        new JFrame( "Break Timer" );
-    private final Canvas            canvas          = new Canvas();
-    private final DigitalDisplay    digitalDisplay  = new DigitalDisplay();
-    private final Controls          controls        = new Controls( frame );
-    private final Alarm             alarm           = Alarm.INSTANCE;
+    /** Frame that encloses a JTabbedPane */
+    private final JFrame            frame       = new JFrame( "Clock" );
+    /** 
+     * Content pane for this appllication's frame. 
+     * All the magic happens in the tabs.
+     * 
+     */
+    private final JTabbedPane       tabbedPane  = new JTabbedPane();
     
+    /**
+     * Main method to start the clock.
+     * 
+     * @param args  command-line arguments; not used
+     */
     public static void main( String[] args )
     {
         new Clock( false );
@@ -52,23 +56,19 @@ public class Clock implements ActionListener
                 System.exit( 1 );
             }
         }
-        alarm.addActionListener( this );
     }
     
-    public void actionPerformed( ActionEvent event )
-    {
-        canvas.repaint();
-    }
-    
+    /**
+     * Add the appropriate JPanels to the JTabbedPane.
+     * Make the JTabbedPane the content pane of the frame.
+     * Size and make visible.
+     */
     private void buildGUI()
     {
         frame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-        Container   pane        = frame.getContentPane();
-        pane.setLayout( new BorderLayout() );
-        pane.add( canvas, BorderLayout.CENTER );
-        
-        pane.add( controls, BorderLayout.WEST );
-        pane.add( digitalDisplay, BorderLayout.NORTH );
+        frame.setContentPane( tabbedPane );
+        tabbedPane.add( "Break Timer", new BreakTimerPanel( frame ) );
+        tabbedPane.add( "Clock", new BasicClockPanel( frame ) );
         frame.pack();
         frame.setVisible( true );
     }
