@@ -41,7 +41,9 @@ public class ClipPlayer
     {
         String clipFileBoing    = 
             "boing-6222.wav";
-        ClipPlayer  player      = ClipPlayer.ofResource( clipFileBoing );
+        String clipFileTrain    = 
+            "train.wav";
+        ClipPlayer  player      = ClipPlayer.ofResource( clipFileTrain );
         System.out.println( player.getMicrosecondLength() );
         for ( int inx = 0 ; inx < 3 ; ++inx )
         {

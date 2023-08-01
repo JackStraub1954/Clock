@@ -12,6 +12,7 @@ public enum TimeKeeper
     public static final String  PAUSED_PROPERTY     = "PAUSED";
     
     private static final    String  clipFileBoing    = "boing-6222.wav";
+    private static final    String  clipFileTrain    = "TrainClipped.wav";
     
     private final Alarm     alarm              = Alarm.INSTANCE;
     
@@ -142,13 +143,13 @@ public enum TimeKeeper
         if ( started && getTimeRemaining() == 0 )
         {
             stop();
-            ClipPlayer.ofResource( clipFileBoing ).play();
+            ClipPlayer.ofResource( clipFileTrain ).play();
         }
     }
     
     private void playClip()
     {
-        ClipPlayer  player  = ClipPlayer.ofResource( clipFileBoing ); 
+        ClipPlayer  player  = ClipPlayer.ofResource( clipFileTrain ); 
         if ( player != null )
         {
             long    pause   = player.getMicrosecondLength() / 1000 + 5;
